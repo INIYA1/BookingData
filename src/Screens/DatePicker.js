@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View,  StyleSheet, TouchableOpacity, Text } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import moment from 'moment';
 import { monthdata } from '../Components/monthdata'
@@ -18,8 +18,8 @@ const DatePickers = () => {
     setDate(updatedDate);
     fetchBookingData(updatedDate); // Fetch the data for the selected date
   };
-
-  const handleDateChange = (event, selectedDate) => {
+// Date change in the date picker
+  const handleDateChange = ( event ,selectedDate) => {
     const currentDate = selectedDate || date;
     setShowDatePicker(false);
     setSelectedDate(currentDate.getDate());
@@ -59,35 +59,22 @@ const DatePickers = () => {
       )}
       <View style={DatePickerStyle.daysContainer}>
         {days.map((day) => (
-          <TouchableOpacity
-            style={[
-              DatePickerStyle.dayButton,
-              selectedDate === day && DatePickerStyle.selectedDayButton,
-            ]}
+          <TouchableOpacity style={[DatePickerStyle.dayButton, selectedDate === day && DatePickerStyle.selectedDayButton]}
             key={day}
-            onPress={() => handleDayPress(day)}
-          >
-            <Text
-              style={[
-                DatePickerStyle.dayText,
-                selectedDate === day && DatePickerStyle.selectedDayText,
-              ]}
-            >
-              {day}
-            </Text>
+            onPress={() => handleDayPress(day)} >
+            <Text style={[DatePickerStyle.dayText, selectedDate === day && DatePickerStyle.selectedDayText,]}>{day}</Text>
           </TouchableOpacity>
         ))}
       </View>
       {bookingData ? (
         <View style={DatePickerStyle.selectedDateContainer}>
-          <Text style={DatePickerStyle.selectedDateText}>
-            Selected Date: {selectedDate} {moment(date).format('MMMM')} {moment(date).format('YYYY')}
-          </Text>
-          <Text style={DatePickerStyle.selectedDateText}>Booking Count: {bookingData.bookingCount}</Text>
-          <Text style={DatePickerStyle.selectedDateText}>Members: {bookingData.memberName.join(', ')}</Text>
+          <Text style={DatePickerStyle.selectedDateText}>Selected Date : {selectedDate} {moment(date).format('MMMM')} {moment(date).format('YYYY')}</Text>
+          <Text style={DatePickerStyle.selectedDateText}>Booking Count : {bookingData.bookingCount}</Text>
+          <Text style={DatePickerStyle.selectedDateText}>Members: {bookingData.memberName.join(' , ')}</Text>
         </View>
       ) : (
         <View style={DatePickerStyle.selectedDateContainer}>
+          <Text style={DatePickerStyle.selectedDateText}>Selected Date: {selectedDate} {moment(date).format('MMMM')} {moment(date).format('YYYY')}</Text>
           <Text style={DatePickerStyle.selectedDateText1}>No data available for the selected date.</Text>
         </View>
       )}

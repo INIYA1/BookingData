@@ -1,9 +1,11 @@
 import React from 'react'
-import DatePickers from './src/Screens/DatePicker'
+import Navigation from './navigation'
+
 
 const App = () => {
   return (
-  <DatePickers />
+
+    <Navigation />
   )
 }
 

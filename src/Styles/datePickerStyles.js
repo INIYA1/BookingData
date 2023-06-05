@@ -14,6 +14,7 @@ export const DatePickerStyle =StyleSheet.create({
         borderWidth: 1,
         borderColor: '#ccc',
         alignItems: 'center',
+        elevation:2
       },
       labelText: {
         fontSize: 16,
