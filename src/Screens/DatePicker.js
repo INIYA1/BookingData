@@ -18,8 +18,8 @@ const DatePickers = () => {
     setDate(updatedDate);
     fetchBookingData(updatedDate); // Fetch the data for the selected date
   };
-// Date change in the date picker
-  const handleDateChange = ( event ,selectedDate) => {
+  // Date change in the date picker
+  const handleDateChange = (event, selectedDate) => {
     const currentDate = selectedDate || date;
     setShowDatePicker(false);
     setSelectedDate(currentDate.getDate());
